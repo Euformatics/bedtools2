@@ -90,6 +90,9 @@ void FileRecordMgr::close(){
 		delete _fileReader;
 		_fileReader = NULL;
 	}
+
+	delete _recordMgr;
+	_recordMgr = NULL;
 }
 
 bool FileRecordMgr::eof(){
