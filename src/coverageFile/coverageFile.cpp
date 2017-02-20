@@ -92,9 +92,7 @@ void CoverageFile::giveFinalReport(RecordOutputMgr *outputMgr) {
 		s << "\t";
 		s << _totalQueryLen;
 		s << "\t";
-		char *depthPctString;
-		asprintf(&depthPctString, "%0.7f", depthPct);
-		s << depthPctString;
+		s << fixed << setprecision(7) << depthPct;
 		_finalOutput = s.str();
 
 		outputMgr->printRecord(NULL, _finalOutput);
@@ -203,9 +201,7 @@ void CoverageFile::doMean(RecordOutputMgr *outputMgr, RecordKeyVector &hits)
 	}
 	ostringstream s;
 	float mean = ((float)sum / (float)_queryLen);
-	char *meanString;
-	asprintf(&meanString, "%0.7f", mean);
-	s << meanString;
+	s << fixed << setprecision(7) << mean;
 	_finalOutput.append(s.str());
 	outputMgr->printRecord(hits.getKey(), _finalOutput);
 }
@@ -232,9 +228,7 @@ void CoverageFile::doHist(RecordOutputMgr *outputMgr, RecordKeyVector &hits)
 		s << "\t";
 		s << _queryLen;
 		s << "\t";
-		char *coveredFractionString;
-		asprintf(&coveredFractionString, "%0.7f", coveredFraction);
-		s << coveredFractionString;
+		s << fixed << setprecision(7) << coveredFraction;
 		_finalOutput = s.str();
 		outputMgr->printRecord(hits.getKey(), _finalOutput);
 	}
@@ -252,9 +246,7 @@ void CoverageFile::doDefault(RecordOutputMgr *outputMgr, RecordKeyVector &hits)
 	s << "\t";
 	s << _queryLen;
 	s << "\t";
-	char *coveredFractionString;
-	asprintf(&coveredFractionString, "%0.7f", coveredFraction);
-	s << coveredFractionString;
+	s << fixed << setprecision(7) << coveredFraction;
 	_finalOutput = s.str();
 	outputMgr->printRecord(hits.getKey(), _finalOutput);
 }
