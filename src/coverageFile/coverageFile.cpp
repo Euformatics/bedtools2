@@ -32,7 +32,7 @@ CoverageFile::CoverageFile(ContextCoverage *context)
 
 CoverageFile::~CoverageFile() {
 	free(_depthArray);
-	delete _floatValBuf;
+	delete[] _floatValBuf;
 }
 
 
